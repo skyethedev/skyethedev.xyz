@@ -1,10 +1,131 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <header>Skye The Dev</header>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skye The Dev</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: radial-gradient(ellipse at center, #0d0d2b 0%, #000 100%);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Planet Container */
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      animation: rotate 60s linear infinite;
+    }
+
+    /* Planet Styling */
+    .planet {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffcc70 0%, #ff8800 100%);
+      box-shadow: 0 0 20px rgba(255, 200, 100, 0.8);
+      animation: bounce 4s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .planet:nth-child(1) {
+      top: 0%;
+      left: 50%;
+      background: radial-gradient(circle, #00f2ff, #005eff);
+    }
+
+    .planet:nth-child(2) {
+      top: 75%;
+      left: 0%;
+      background: radial-gradient(circle, #9d00ff, #4b0082);
+    }
+
+    .planet:nth-child(3) {
+      top: 85%;
+      left: 85%;
+      background: radial-gradient(circle, #ff6b81, #d10047);
+    }
+
+    .planet:hover {
+      transform: scale(1.3);
+    }
+
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .cta {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background: #ffffff10;
+      border: 1px solid #fff;
+      color: white;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background: #ffffff25;
+    }
+  </style>
+</head>
 <body>
-    <h1>Hopefully this doesn't get indexed!</h1>
-    <h3>Just verifying that this domain will work.</h3>
+  <h1>SkyeTheDev.xyz</h1>
+  <p>Contact me - Let's do something awesome</p>
+
+  <div class="orbit">
+    <div class="planet"></div>
+    <div class="planet"></div>
+    <div class="planet"></div>
+  </div>
+
+<a href="mailto:skyethedev@gmail.com" class="cta">Get Started</a>
+
+  <script>
+    const planets = document.querySelectorAll('.planet');
+    planets.forEach(planet => {
+      planet.addEventListener('mouseover', () => {
+        planet.style.boxShadow = '0 0 40px rgba(255, 255, 255, 0.9)';
+      });
+      planet.addEventListener('mouseout', () => {
+        planet.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.5)';
+      });
+    });
+  </script>
 </body>
+</html>
